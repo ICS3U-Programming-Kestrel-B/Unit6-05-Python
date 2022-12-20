@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+
+# Created By: Kestrel Bryce
+# Date: Dec. 20, 2022
+# This program asks the user
+# to input grades from 1 to
+# 100, and then finds the
+# average of the grades
+
+import math
+import random
+import lists
+
+
+def calc_average(grade_num_list):
+    # initializing sum
+    sum = 0
+    for a_single_number in grade_num_list:
+        # reassigning sum
+        sum = sum + a_single_number
+    # initializing num_amount
+    num_amount = len(grade_num_list)
+    # checking for errors
+    if num_amount == 0:
+        return -1
+    # returning as normal
+    else:
+        final_sum = sum / num_amount
+        return final_sum
+
+
+def main():
+    # introductory paragraph
+    print("This program asks the user")
+    print("to input grades from 1 to")
+    print("100, and then finds the")
+    print("average of the grades")
+    print("")
+
+    # initializing list
+    grade_num_list = []
+
+    # generating numbers
+    while True:
+        user_input = input("Enter a positive number [enter stop to stop]: ")
+        # checking to see if loop continues
+        if user_input == "stop":
+            break
+        # checking valid input
+        try:
+            user_input_float = float(user_input)
+
+            # adding input to list
+            grade_num_list.append(user_input_float)
+        except ValueError:
+            # Error message
+            print("\n")
+            print("Please enter a grade between 1 and 100.")
+
+
+    # calling function
+    true_sum = calc_average(grade_num_list)
+
+    # checking results
+    if (true_sum == -1):
+        # error message (not enough grades)
+        print("Please enter two or more grades.")
+    else:
+        # displaying results
+        print("The average grade is {}.".format(true_sum))
+
+
+if __name__ == "__main__":
+    main()
