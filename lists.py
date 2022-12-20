@@ -48,26 +48,29 @@ def main():
             break
         # checking valid input
         try:
-            user_input_float = float(user_input)
+            user_input_int = int(user_input)
 
-            # adding input to list
-            grade_num_list.append(user_input_float)
+            # checking if input is within range
+            if user_input_int > 100 or user_input_int < 0:
+                print("Please enter a grade between 1 and 100.")
+                continue
+            else:
+                # adding input to list
+                grade_num_list.append(user_input_int)
         except ValueError:
             # Error message
-            print("\n")
-            print("Please enter a grade between 1 and 100.")
-
+            print("Please enter a numerical grade.")
 
     # calling function
     true_sum = calc_average(grade_num_list)
 
     # checking results
-    if (true_sum == -1):
+    if true_sum == -1:
         # error message (not enough grades)
         print("Please enter two or more grades.")
     else:
         # displaying results
-        print("The average grade is {}.".format(true_sum))
+        print("The average grade is {}%.".format(true_sum))
 
 
 if __name__ == "__main__":
